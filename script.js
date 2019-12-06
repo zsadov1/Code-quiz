@@ -1,109 +1,91 @@
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementsByid('results');
-const submit = document.getElementsByid('submit');
+function generateQuiz(questions, quizContainer, ResultsContainer, submitButton){
 
-function createQuiz(){
-    // a place to store the HTML output
-    const output = [];
+    function showQuestion(questions,quizContainer){
 
-    // for each question
-    myQuestions.forEach(
-        (currentQuestion, questionNumber) => {
-
-            // store the list of answer choices
-            const answers =[];
-
-            // for each available answer
-            for(letter in currentQuestion.answers){
-
-            // add an HTML radio buitton
-            answers.push(
-                `<label>
-                <input type='radio name=question${questionNumber}' value='${letter}'></input>
-                ${letter} :
-                ${currentQuestion.answers[letter]}
-                </label>`
-            );
+        // code
     }
-            // include this question and its answers to the output
-            output.push(
-                `<div class="question"> ${currentQustion.question} </div>
-                <div class="answers"> ${answers.join('')}</div>`
-            )
-                
-            
-        }
-    );
-            // Combine output list into one string of HTML and put in ion the page
-            quizContainer.innerHTML = output.join(''); 
-};
 
-    myQuestions.forEach( (currentQuestion, question Number) => {
-        // The code we want to run for each question 
-        // we'll want to store the list of answer choices
-        const answers = [];
+    function showResults(questions, quizContainer, resultsContainer){
 
-        // and for each available answer...
-        for(letter in currentQuestion.answers){
+        // code
 
-        // ...add an html radio button
-            answers.push(
-            `<label>
-            <input type="radio" name="question${questionNumber}" value="${letter}">
-            ${letter} :
-            ${currentQuestion.answers[letter]}
-            </label>`
-  );
+    }
 
-    quizContainer.innerHTML = output.join('');
+    showQuestion(questions,quizContainer);
+
+    submitButton.onclick = function(){
+        showResults(questions, quizContainer,resultsContainer);
+    }
 }
 
-// add this question and its answers to the output
-output.push(
-  `<div class="question"> ${currentQuestion.question} </div>
-  <div class="answers"> ${answers.join('')} </div>`
-);
-    })
-
-function showResults(){
-    
-};
-
-// display quiz right away
-createQuiz();
-
-// on submit, show results 
-submitButton.addEventListener('click', showResults);
-
-const myQuestions = [
+var myQuestion = [
     {
-      question: "Who is the strongest?",
-      answers: {
-        a: "Superman",
-        b: "The Terminator",
-        c: "Waluigi, obviously"
-      },
-      correctAnswer: "c"
+        question: "What is 5 + 5?",
+        answers: {
+            a: '10',
+            b: '5',
+            c: 'Mashed Potato',
+            d: 'Egg',
+        },
+        correctAnswer: '10'
     },
     {
-      question: "What is the best site ever created?",
-      answers: {
-        a: "SitePoint",
-        b: "Simple Steps Code",
-        c: "Trick question; they're both the best"
-      },
-      correctAnswer: "c"
+        question: "What is 5 + 5?",
+        answers: {
+            a: '10',
+            b: '5',
+            c: 'Mashed Potato',
+            d: 'Egg',
+        },
+        correctAnswer: '10'
     },
     {
-      question: "Where is Waldo really?",
-      answers: {
-        a: "Antarctica",
-        b: "Exploring the Pacific Ocean",
-        c: "Sitting in a tree",
-        d: "Minding his own business, so stop asking"
-      },
-      correctAnswer: "d"
+        question: "What is 5 + 5?",
+        answers: {
+            a: '10',
+            b: '5',
+            c: 'Mashed Potato',
+            d: 'Egg',
+        },
+        correctAnswer: '10'
+    },
+    {
+        question: "What is 5 + 5?",
+        answers: {
+            a: '10',
+            b: '5',
+            c: 'Mashed Potato',
+            d: 'Egg',
+        },
+        correctAnswer: '10'
+    },
+];
+
+function showQuestions(questions, quizContainer){
+    var output = [];
+    var answers;
+
+    for(var i = 0; i < question.length; i++ ){
+        answers = [];
+
+        for(letter in question[i].answers){
+
+            answers.push(
+                '<label>'
+                    + '<input type "radio" name="question'+i+'"value= "'+letter+'>'
+                    + letter + ': '
+                    + question[i].answers[letter] 
+                + '</label>'        
+           );
+        }
+
+        output.push(
+            '<div class="questions">' + questions[i].question + '</div>'
+            + '<div class="answers">' + answers.join('') + '</div>'
+        );
     }
-  ];
+    quizContainer.innerHTML = output.join('');
+}
+    
 
-
+    showQuestions(questions, quizContainer);
